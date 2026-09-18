@@ -1,4 +1,4 @@
-const SUPABASE_URL = "COLE_AQUI_SUA_URL";
+const SUPABASE_URL = "https://pkntkbnazykqehilggct.supabase.co/rest/v1/";
 const SUPABASE_KEY = "COLE_AQUI_SUA_CHAVE_PUBLICA";
 
 const supabaseClient = window.supabase.createClient(
