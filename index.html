@@ -1,241 +1,713 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Identidade, Cultura e Diversidade</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#172033;line-height:1.5}
-header{background:linear-gradient(135deg,#3157d5,#6d4bd8);color:white;padding:70px 20px;text-align:center}
-header .tag{display:inline-block;background:rgba(255,255,255,.18);padding:7px 14px;border-radius:30px;font-size:14px;margin-bottom:18px}
-header h1{font-size:clamp(30px,5vw,52px);margin-bottom:12px}
-header p{max-width:700px;margin:auto;font-size:18px;opacity:.95}
-main{max-width:900px;margin:-35px auto 50px;padding:0 18px}
-.card{background:white;border-radius:20px;padding:30px;box-shadow:0 10px 35px rgba(30,45,80,.10);margin-bottom:20px}
-.intro{text-align:center}
-.intro h2{margin-bottom:10px}
-.question{border:1px solid #e4e8f0;border-radius:16px;padding:22px;margin:18px 0}
-.question h3{font-size:18px;margin-bottom:15px}
-label{display:block;padding:11px 13px;margin:8px 0;border-radius:10px;background:#f7f8fc;cursor:pointer;border:1px solid transparent}
-label:hover{border-color:#b8c5ef;background:#f0f3ff}
-input{margin-right:9px;accent-color:#3157d5}
-button{width:100%;border:0;border-radius:13px;padding:15px;font-size:17px;font-weight:bold;background:#3157d5;color:white;cursor:pointer}
-button:hover{background:#2547b7}
-button.secondary{background:#eef1f8;color:#25314a;margin-top:10px}
-.error{color:#b42318;background:#fff1f0;padding:12px;border-radius:10px;margin-bottom:15px;display:none}
-#results{display:none}
-.result-row{margin:18px 0}
-.result-head{display:flex;justify-content:space-between;gap:10px;font-size:14px;margin-bottom:6px}
-.bar{height:12px;background:#e9edf5;border-radius:20px;overflow:hidden}
-.fill{height:100%;background:linear-gradient(90deg,#3157d5,#6d4bd8);width:0}
-footer{text-align:center;color:#697386;padding:10px 20px 40px;font-size:13px}
-.small{color:#687386;font-size:14px}
-</style>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Pesquisa escolar sobre identidade, cultura e diversidade."
+    >
+
+    <title>
+        Identidade, Cultura e Diversidade
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
+
 <body>
-<header>
-  <div class="tag">PESQUISA ESCOLAR</div>
-  <h1>Identidade, Cultura e Diversidade</h1>
-  <p>Uma pesquisa para conhecer diferentes identidades, origens e tradições culturais da comunidade.</p>
-</header>
 
-<main>
-  <section class="card intro">
-    <h2>Participe da pesquisa</h2>
-    <p class="small">Marque apenas uma alternativa em cada pergunta. A pesquisa não solicita nome nem outros dados pessoais.</p>
-  </section>
 
-  <section class="card" id="surveyCard">
-    <div id="closedMessage" style="display:none;text-align:center;padding:18px 0">
-      <h2>🔒 Pesquisa encerrada</h2>
-      <p class="small" style="margin-top:8px">A coleta de respostas foi encerrada pelo administrador.</p>
-    </div>
-    <div id="error" class="error">Responda todas as perguntas antes de enviar.</div>
-    <form id="survey">
-      <div class="question">
-        <h3>1. Com qual cor ou raça você se identifica?</h3>
-        <label><input type="radio" name="q1" value="Branca">Branca</label>
-        <label><input type="radio" name="q1" value="Preta">Preta</label>
-        <label><input type="radio" name="q1" value="Parda">Parda</label>
-        <label><input type="radio" name="q1" value="Amarela">Amarela</label>
-        <label><input type="radio" name="q1" value="Indígena">Indígena</label>
-        <label><input type="radio" name="q1" value="Prefiro não responder">Prefiro não responder</label>
-      </div>
+    <!-- =================================================
+         CABEÇALHO
+    ================================================== -->
 
-      <div class="question">
-        <h3>2. Qual é a sua origem familiar ou cultural?</h3>
-        <label><input type="radio" name="q2" value="Brasileira">Brasileira</label>
-        <label><input type="radio" name="q2" value="Indígena">Indígena</label>
-        <label><input type="radio" name="q2" value="Africana">Africana</label>
-        <label><input type="radio" name="q2" value="Europeia">Europeia</label>
-        <label><input type="radio" name="q2" value="Asiática">Asiática</label>
-        <label><input type="radio" name="q2" value="Outra">Outra</label>
-      </div>
+    <header class="site-header">
 
-      <div class="question">
-        <h3>3. Você participa ou conhece alguma tradição cultural da sua família ou comunidade?</h3>
-        <label><input type="radio" name="q3" value="Sim">Sim</label>
-        <label><input type="radio" name="q3" value="Não">Não</label>
-      </div>
+        <div class="container header-content">
 
-      <div class="question">
-        <h3>4. Você costuma participar de festas ou eventos culturais da sua comunidade?</h3>
-        <label><input type="radio" name="q4" value="Sempre">Sempre</label>
-        <label><input type="radio" name="q4" value="Às vezes">Às vezes</label>
-        <label><input type="radio" name="q4" value="Raramente">Raramente</label>
-        <label><input type="radio" name="q4" value="Nunca">Nunca</label>
-      </div>
 
-      <div class="question">
-        <h3>5. Você considera importante preservar a cultura e as tradições da sua região?</h3>
-        <label><input type="radio" name="q5" value="Sim, muito importante">Sim, muito importante</label>
-        <label><input type="radio" name="q5" value="Sim, importante">Sim, importante</label>
-        <label><input type="radio" name="q5" value="Pouco importante">Pouco importante</label>
-        <label><input type="radio" name="q5" value="Não considero importante">Não considero importante</label>
-      </div>
+            <a
+                href="index.html"
+                class="logo"
+            >
+                Identidade, Cultura e Diversidade
+            </a>
 
-      <button type="submit">Enviar minha resposta</button>
-    </form>
-  </section>
 
-  <section class="card" id="thanks" style="display:none;text-align:center">
-    <h2>Obrigado por participar! 🎉</h2>
-    <p>Sua resposta foi registrada neste dispositivo para compor os resultados desta pesquisa.</p>
-    <button class="secondary" onclick="showResults()">Ver resultados</button>
-  </section>
+            <a
+                href="admin.html"
+                class="admin-link"
+            >
+                Área do Administrador
+            </a>
 
-  <section class="card" id="adminPanel" style="text-align:center">
-    <h2>Área do administrador</h2>
-    <p class="small" style="margin:8px 0 16px">Use esta área para encerrar a coleta e visualizar as porcentagens.</p>
-    <button type="button" onclick="adminLogin()">Acessar administração</button>
-    <div id="adminControls" style="display:none;margin-top:18px">
-      <p class="small" id="adminStatus" style="margin-bottom:12px"></p>
-      <button type="button" onclick="closeSurvey()">🔒 Encerrar pesquisa</button>
-      <button type="button" class="secondary" onclick="reopenSurvey()">🔓 Reabrir pesquisa</button>
-      <button type="button" class="secondary" onclick="showResults()">📊 Ver porcentagens</button>
-    </div>
-  </section>
 
-  <section class="card" id="results">
-    <h2 style="margin-bottom:8px">Resultados da pesquisa</h2>
-    <p class="small">Os gráficos abaixo mostram as respostas registradas neste navegador.</p>
-    <div id="charts"></div>
-    <button class="secondary" onclick="clearResults()">Limpar resultados deste dispositivo</button>
-  </section>
-</main>
+        </div>
 
-<footer>Pesquisa escolar • Identidade, Cultura e Diversidade</footer>
+    </header>
 
-<script>
-const dataKey='pesquisa_identidade_cultura_v1';
-const statusKey='pesquisa_identidade_cultura_status_v1';
-const ADMIN_PASSWORD='admin2026'; // Altere esta senha no código se quiser.
-const questions={
-q1:['Branca','Preta','Parda','Amarela','Indígena','Prefiro não responder'],
-q2:['Brasileira','Indígena','Africana','Europeia','Asiática','Outra'],
-q3:['Sim','Não'],
-q4:['Sempre','Às vezes','Raramente','Nunca'],
-q5:['Sim, muito importante','Sim, importante','Pouco importante','Não considero importante']
-};
-let data=JSON.parse(localStorage.getItem(dataKey)||'[]');
-let surveyClosed=localStorage.getItem(statusKey)==='closed';
 
-function updateSurveyState(){
-  const form=document.getElementById('survey');
-  const msg=document.getElementById('closedMessage');
-  if(surveyClosed){
-    form.style.display='none';
-    msg.style.display='block';
-  }else{
-    form.style.display='block';
-    msg.style.display='none';
-  }
-  updateAdminStatus();
-}
 
-document.getElementById('survey').addEventListener('submit',e=>{
- e.preventDefault();
- if(surveyClosed)return;
- const answers={};
- for(const q of Object.keys(questions)){
-   const selected=document.querySelector(`input[name="${q}"]:checked`);
-   if(!selected){document.getElementById('error').style.display='block';return}
-   answers[q]=selected.value;
- }
- data.push(answers);
- localStorage.setItem(dataKey,JSON.stringify(data));
- document.getElementById('error').style.display='none';
- document.getElementById('survey').reset();
- document.getElementById('surveyCard').style.display='none';
- document.getElementById('thanks').style.display='block';
-});
+    <!-- =================================================
+         CONTEÚDO PRINCIPAL
+    ================================================== -->
 
-function adminLogin(){
- const password=prompt('Digite a senha do administrador:');
- if(password===ADMIN_PASSWORD){
-   document.getElementById('adminControls').style.display='block';
-   updateAdminStatus();
- }else if(password!==null){
-   alert('Senha incorreta.');
- }
-}
-function updateAdminStatus(){
- const el=document.getElementById('adminStatus');
- if(!el)return;
- el.textContent=(surveyClosed?'Status: pesquisa encerrada. ':'Status: pesquisa aberta. ')
-   + `Respostas registradas neste dispositivo: ${data.length}.`;
-}
-function closeSurvey(){
- if(confirm(`Encerrar a pesquisa agora? Foram registradas ${data.length} resposta(s) neste dispositivo.`)){
-   surveyClosed=true;
-   localStorage.setItem(statusKey,'closed');
-   updateSurveyState();
-   document.getElementById('results').style.display='block';
-   render();
-   document.getElementById('results').scrollIntoView({behavior:'smooth'});
- }
-}
-function reopenSurvey(){
- surveyClosed=false;
- localStorage.removeItem(statusKey);
- updateSurveyState();
- alert('A pesquisa foi reaberta.');
-}
-function showResults(){
- document.getElementById('results').style.display='block';
- render();
- document.getElementById('results').scrollIntoView({behavior:'smooth'});
-}
-function render(){
- const charts=document.getElementById('charts');
- charts.innerHTML='';
- const total=document.createElement('p');
- total.className='small';
- total.style.margin='14px 0 20px';
- total.textContent=`Total de respostas: ${data.length}`;
- charts.appendChild(total);
+    <main class="container">
 
- Object.entries(questions).forEach(([q,opts],i)=>{
-   const box=document.createElement('div');
-   box.className='result-row';
-   const title=document.createElement('h3');
-   title.textContent=`${i+1}. ${['Cor ou raça','Origem familiar ou cultural','Tradições culturais','Festas ou eventos culturais','Preservação cultural'][i]}`;
-   box.appendChild(title);
-   opts.forEach(opt=>{
-     const count=data.filter(x=>x[q]===opt).length;
-     const pct=data.length?Math.round(count/data.length*100):0;
-     box.innerHTML+=`<div class="result-head"><span>${opt}</span><span>${count} (${pct}%)</span></div><div class="bar"><div class="fill" style="width:${pct}%"></div></div>`;
-   });
-   charts.appendChild(box);
- });
-}
-function clearResults(){
- if(confirm('Tem certeza que deseja apagar todos os resultados deste navegador?')){
-   data=[];localStorage.removeItem(dataKey);render();updateAdminStatus();
- }
-}
-updateSurveyState();
-</script>
+
+        <!-- =================================================
+             APRESENTAÇÃO
+        ================================================== -->
+
+        <section class="hero">
+
+
+            <span class="tag">
+                PESQUISA ESCOLAR
+            </span>
+
+
+            <h1>
+                Identidade, Cultura e Diversidade
+            </h1>
+
+
+            <p>
+                Esta pesquisa tem como objetivo conhecer diferentes
+                identidades, origens e experiências culturais presentes
+                em nossa comunidade.
+            </p>
+
+
+            <p>
+                Suas respostas serão utilizadas para compreender melhor
+                a diversidade cultural e a importância da preservação
+                das tradições.
+            </p>
+
+
+            <div
+                id="researchStatus"
+                class="status open"
+            >
+                ● Pesquisa aberta
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PESQUISA ENCERRADA
+        ================================================== -->
+
+        <section
+            id="closedMessage"
+            class="closed-message hidden"
+        >
+
+
+            <div class="closed-icon">
+                🔒
+            </div>
+
+
+            <div>
+
+                <h2>
+                    Pesquisa encerrada
+                </h2>
+
+
+                <p>
+                    A coleta de respostas foi encerrada
+                    pelo administrador.
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FORMULÁRIO
+        ================================================== -->
+
+        <section
+            id="surveyContainer"
+            class="survey-card"
+        >
+
+
+            <div class="section-title">
+
+
+                <span class="tag">
+                    PARTICIPE
+                </span>
+
+
+                <h2>
+                    Responda à pesquisa
+                </h2>
+
+
+                <p>
+                    Não é necessário informar seu nome.
+                    Escolha uma alternativa em cada pergunta.
+                </p>
+
+
+            </div>
+
+
+
+            <form id="surveyForm">
+
+
+                <!-- =================================================
+                     PERGUNTA 1
+                ================================================== -->
+
+                <fieldset>
+
+
+                    <legend>
+                        1. Com qual cor ou raça você se identifica?
+                    </legend>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="Branca"
+                            required
+                        >
+
+                        <span>
+                            Branca
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="Preta"
+                        >
+
+                        <span>
+                            Preta
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="Parda"
+                        >
+
+                        <span>
+                            Parda
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="Amarela"
+                        >
+
+                        <span>
+                            Amarela
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="Indígena"
+                        >
+
+                        <span>
+                            Indígena
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q1"
+                            value="Prefiro não responder"
+                        >
+
+                        <span>
+                            Prefiro não responder
+                        </span>
+
+                    </label>
+
+
+                </fieldset>
+
+
+
+                <!-- =================================================
+                     PERGUNTA 2
+                ================================================== -->
+
+                <fieldset>
+
+
+                    <legend>
+                        2. Qual é a sua origem familiar ou cultural?
+                    </legend>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="Brasileira"
+                            required
+                        >
+
+                        <span>
+                            Brasileira
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="Indígena"
+                        >
+
+                        <span>
+                            Indígena
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="Africana"
+                        >
+
+                        <span>
+                            Africana
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="Europeia"
+                        >
+
+                        <span>
+                            Europeia
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="Asiática"
+                        >
+
+                        <span>
+                            Asiática
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q2"
+                            value="Outra"
+                        >
+
+                        <span>
+                            Outra
+                        </span>
+
+                    </label>
+
+
+                </fieldset>
+
+
+
+                <!-- =================================================
+                     PERGUNTA 3
+                ================================================== -->
+
+                <fieldset>
+
+
+                    <legend>
+                        3. Você participa ou conhece alguma tradição
+                        cultural da sua família ou comunidade?
+                    </legend>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="Sim"
+                            required
+                        >
+
+                        <span>
+                            Sim
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q3"
+                            value="Não"
+                        >
+
+                        <span>
+                            Não
+                        </span>
+
+                    </label>
+
+
+                </fieldset>
+
+
+
+                <!-- =================================================
+                     PERGUNTA 4
+                ================================================== -->
+
+                <fieldset>
+
+
+                    <legend>
+                        4. Você costuma participar de festas ou eventos
+                        culturais da sua comunidade?
+                    </legend>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="Sempre"
+                            required
+                        >
+
+                        <span>
+                            Sempre
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="Às vezes"
+                        >
+
+                        <span>
+                            Às vezes
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="Raramente"
+                        >
+
+                        <span>
+                            Raramente
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q4"
+                            value="Nunca"
+                        >
+
+                        <span>
+                            Nunca
+                        </span>
+
+                    </label>
+
+
+                </fieldset>
+
+
+
+                <!-- =================================================
+                     PERGUNTA 5
+                ================================================== -->
+
+                <fieldset>
+
+
+                    <legend>
+                        5. Você considera importante preservar a cultura
+                        e as tradições da sua região?
+                    </legend>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="Sim, muito importante"
+                            required
+                        >
+
+                        <span>
+                            Sim, muito importante
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="Sim, importante"
+                        >
+
+                        <span>
+                            Sim, importante
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="Pouco importante"
+                        >
+
+                        <span>
+                            Pouco importante
+                        </span>
+
+                    </label>
+
+
+                    <label>
+
+                        <input
+                            type="radio"
+                            name="q5"
+                            value="Não considero importante"
+                        >
+
+                        <span>
+                            Não considero importante
+                        </span>
+
+                    </label>
+
+
+                </fieldset>
+
+
+
+                <!-- =================================================
+                     BOTÃO
+                ================================================== -->
+
+                <button
+                    type="submit"
+                    id="submitButton"
+                    class="primary-button"
+                >
+                    Enviar minha resposta
+                </button>
+
+
+            </form>
+
+
+
+            <!-- =================================================
+                 MENSAGEM DE SUCESSO
+            ================================================== -->
+
+            <div
+                id="confirmation"
+                class="confirmation hidden"
+                role="status"
+            >
+
+
+                <div class="confirmation-icon">
+                    ✓
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Resposta enviada com sucesso!
+                    </strong>
+
+
+                    <p>
+                        Obrigado por participar da pesquisa.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MENSAGEM DE ERRO
+            ================================================== -->
+
+            <div
+                id="errorMessage"
+                class="error-message hidden"
+            >
+
+                Não foi possível enviar sua resposta.
+                Tente novamente.
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =================================================
+         RODAPÉ
+    ================================================== -->
+
+    <footer class="site-footer">
+
+
+        <div class="container">
+
+
+            <p>
+                Projeto escolar — Identidade, Cultura e Diversidade
+            </p>
+
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- =================================================
+         SUPABASE
+    ================================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- =================================================
+         NOSSO JAVASCRIPT
+    ================================================== -->
+
+    <script src="script.js"></script>
+
+
 </body>
+
 </html>
