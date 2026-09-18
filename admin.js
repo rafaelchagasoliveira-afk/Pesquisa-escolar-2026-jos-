@@ -1,6 +1,5 @@
 const SUPABASE_URL = "https://pkntkbnazykqehilggct.supabase.co/rest/v1/";
 const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBrbnRrYm5henlrcWVoaWxnZ2N0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk3NDk4OTgsImV4cCI6MjEwNTMyNTg5OH0.K7aDh9ikINZuhL7RFiM91ENgcyARnZDlnvsIBGc8WQA";
-
 const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
