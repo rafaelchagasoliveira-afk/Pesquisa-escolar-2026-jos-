@@ -1,1 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Área administrativa da pesquisa Identidade, Cultura e Diversidade.">
+    <title>Administração — Identidade, Cultura e Diversidade</title>
 
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                Identidade, Cultura e Diversidade
+            </a>
+
+            <a href="index.html" class="admin-link">
+                Voltar para pesquisa
+            </a>
+        </div>
+    </header>
+
+    <main class="container admin-page">
+
+        <!-- LOGIN -->
+        <section id="loginSection" class="survey-card">
+
+            <div class="section-title">
+                <span class="tag">ADMINISTRAÇÃO</span>
+
+                <h1>Área do Administrador</h1>
+
+                <p>
+                    Digite a senha para acessar os resultados da pesquisa.
+                </p>
+            </div>
+
+            <form id="loginForm">
+
+                <label for="adminPassword" class="input-label">
+                    Senha administrativa
+                </label>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    class="text-input"
+                    placeholder="Digite a senha"
+                    required
+                >
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Entrar
+                </button>
+
+            </form>
+
+            <div
+                id="loginError"
+                class="error-message hidden"
+            >
+                Senha incorreta.
+            </div>
+
+        </section>
+
+
+        <!-- PAINEL ADMIN -->
+        <section
+            id="adminPanel"
+            class="hidden"
+        >
+
+            <div class="admin-top">
+
+                <div>
+                    <span class="tag">
+                        PAINEL ADMINISTRATIVO
+                    </span>
+
+                    <h1>
+                        Resultados da pesquisa
+                    </h1>
+
+                    <p>
+                        Aqui você pode acompanhar as respostas
+                        recebidas e controlar a pesquisa.
+                    </p>
+                </div>
+
+                <button
+                    id="logoutButton"
+                    class="secondary-button"
+                >
+                    Sair
+                </button>
+
+            </div>
+
+
+            <!-- STATUS -->
+            <div class="admin-card">
+
+                <div class="admin-card-header">
+
+                    <div>
+                        <h2>Status da pesquisa</h2>
+
+                        <p id="statusDescription">
+                            Verificando...
+                        </p>
+                    </div>
+
+                    <span
+                        id="adminStatus"
+                        class="status"
+                    >
+                        ● Verificando
+                    </span>
+
+                </div>
+
+                <div class="admin-actions">
+
+                    <button
+                        id="closeResearchButton"
+                        class="danger-button"
+                    >
+                        🔒 Encerrar pesquisa
+                    </button>
+
+                    <button
+                        id="openResearchButton"
+                        class="secondary-button"
+                    >
+                        🔓 Reabrir pesquisa
+                    </button>
+
+                    <button
+                        id="refreshButton"
+                        class="secondary-button"
+                    >
+                        ↻ Atualizar resultados
+                    </button>
+
+                    <button
+                        id="exportButton"
+                        class="secondary-button"
+                    >
+                        📥 Exportar CSV
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <span class="stat-label">
+                        Total de respostas
+                    </span>
+
+                    <strong
+                        id="totalResponses"
+                        class="stat-number"
+                    >
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- RESULTADOS -->
+            <div id="resultsContainer">
+
+                <!-- Os resultados serão criados pelo admin.js -->
+
+            </div>
+
+
+            <!-- MENSAGENS -->
+            <div
+                id="adminMessage"
+                class="confirmation hidden"
+            >
+                <div class="confirmation-icon">
+                    ✓
+                </div>
+
+                <div>
+                    <strong id="adminMessageTitle">
+                        Operação realizada
+                    </strong>
+
+                    <p id="adminMessageText">
+                        Tudo certo.
+                    </p>
+                </div>
+            </div>
+
+
+            <div
+                id="adminError"
+                class="error-message hidden"
+            >
+                Ocorreu um erro.
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <p>
+                Projeto escolar — Identidade, Cultura e Diversidade
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- JavaScript do administrador -->
+    <script src="admin.js"></script>
+
+</body>
+</html>
